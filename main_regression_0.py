@@ -10,21 +10,19 @@ import os
 import tensorflow as tf
 from tensorflow import keras
 
-# ------------------ Nouveau jeu de données ------------------
-N = 100
-X = np.random.rand(N, 1)
-y = 2 * X + 1 + 0.1 * np.random.randn(N, 1)
+# ------------------ Données sinusoïdales ------------------
+X = np.linspace(0, 2*np.pi, 100).reshape(-1, 1)
+y = np.sin(X)
 
+# Séparation train/test
 X_train, X_test = X[:80], X[80:]
 y_train, y_test = y[:80], y[80:]
 
 # ------------------ Dossier de sortie ------------------
-output_dir = "question3"
+output_dir = "question4"
 os.makedirs(output_dir, exist_ok=True)
 
-# ------------------ Régression avec le meilleur RN ------------------
-# Ici, on recrée un modèle identique au meilleur (à remplacer selon Q2)
-# Exemple : 2 couches cachées, 4 neurones, optimizer=Adam 0.01
+# ------------------ Meilleur modèle RN (même architecture que Q3) ------------------
 best_model = keras.Sequential([
     keras.layers.Input(shape=(1,)),
     keras.layers.Dense(2, activation="relu"),
@@ -32,7 +30,7 @@ best_model = keras.Sequential([
 ])
 best_model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.01), loss="mse")
 
-# Entraînement sur le nouveau jeu de données
+# Entraînement
 best_model.fit(X_train, y_train, epochs=80, batch_size=32, verbose=0)
 
 # Prédiction
@@ -99,7 +97,7 @@ plt.close()
 plt.figure(figsize=(8,5))
 plt.axis('off')
 txt = (
-    f"Comparaison des modèles – Question 3\n\n"
+    f"Comparaison des modèles – Question 4\n\n"
     f"Réseau de neurones      : MSE = {mse_rn:.4f}\n"
     f"Régression Linéaire      : MSE = {mse_lin:.4f}\n"
     f"Régression Polynomiale   : MSE = {mse_poly:.4f}\n"
@@ -108,4 +106,4 @@ plt.text(0.01, 0.5, txt, fontsize=12)
 plt.savefig(os.path.join(output_dir, "resume_comparatif.png"))
 plt.close()
 
-print("Question 3 terminée. Tous les PNG sont dans ./question3/")
+print("Question 4 terminée. Tous les PNG sont dans ./question4/")
