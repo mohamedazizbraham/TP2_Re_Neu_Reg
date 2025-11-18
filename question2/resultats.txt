@@ -1,0 +1,40 @@
+CONFIG 1
+Couches cachées   : 1
+Neurones/couche   : 2
+Optimiseur        : adam
+Fonction coût     : MSE
+Test Loss final   : 3.3980
+
+
+CONFIG 2
+Couches cachées   : 2
+Neurones/couche   : 4
+Optimiseur        : sgd
+Fonction coût     : MSE
+Test Loss final   : 0.3627
+
+
+CONFIG 3
+Couches cachées   : 3
+Neurones/couche   : 8
+Optimiseur        : adam_lr_0.009999999776482582
+Fonction coût     : MSE
+Test Loss final   : 0.0056
+
+
+CONFIG 4
+Couches cachées   : 1
+Neurones/couche   : 8
+Optimiseur        : adam
+Fonction coût     : MSE
+Test Loss final   : 0.9782
+
+
+CONFIG 5
+Couches cachées   : 2
+Neurones/couche   : 2
+Optimiseur        : adam_lr_0.0010000000474974513
+Fonction coût     : MSE
+Test Loss final   : 2.5921
+
+
